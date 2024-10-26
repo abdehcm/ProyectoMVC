@@ -77,29 +77,8 @@
             <rango_militar>Capitán
             <ocupacion>Patrulla
         </jinete>
-        <jinete id ="6">
-            <nombre>Óntar</nombre>
-            <apellidos>Al-Karachi Siham</apellidos>
-            <sexo>Honbre</sexo>
-            <fecha_nacimiento>2245-05-12
-            <fecha_incorporacion>2262-08-24
-            <altura>5.6,
-            <mano_dominante>D
-            <rango_militar>Capitán
-            <ocupacion>Patrulla
         </jinete>
         <jinete id ="7">
-            <nombre>Óntar</nombre>
-            <apellidos>Al-Karachi Siham</apellidos>
-            <sexo>Honbre</sexo>
-            <fecha_nacimiento>2245-05-12</fecha_nacimiento>
-            <fecha_incorporacion>2262-08-24</fecha_incorporacion>
-            <altura>5.6</altura>
-            <mano_dominante>D</mano_dominante>
-            <rango_militar>Capitán</rango_militar>
-            <ocupacion>Patrulla</ocupacion>
-        </jinete>
-        <jinete id ="8">
             <nombre>Sestos</nombre>
             <apellidos>Kahsay Teklu</apellidos>
             <sexo>Hombre</sexo>
@@ -110,7 +89,7 @@
             <rango_militar>Sargento</rango_militar>
             <ocupacion>Patrulla</ocupacion>
         </jinete>
-        <jinete id ="7">
+        <jinete id ="8">
             <nombre>Leisy</nombre>
             <apellidos>Kahsay Teklu</apellidos>
             <sexo>Mujer</sexo>
