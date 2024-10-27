@@ -69,7 +69,7 @@
         <jinete id ="6">
             <nombre>Óntar</nombre>
             <apellidos>Al-Karachi Siham</apellidos>
-            <sexo>Honbre</sexo>
+            <sexo>Hombre</sexo>
             <fecha_nacimiento>2245-05-12
             <fecha_incorporacion>2262-08-24
             <altura>5.6,
@@ -102,23 +102,23 @@
         </jinete>
     </jinetes>
     <parejas>
-        <jinete_monta>
+        <pareja>
             <id_dragon>1</id_dragon>
             <id_jinete>6</id_jinete>
             <fecha_inicio>2263-01-11</fecha_inicio>
             <fecha_fin></fecha_fin>
-        </jinete_monta>
-        <jinete_monta>
+        </pareja>
+        <pareja>
             <id_dragon>2</id_dragon>
             <id_jinete>7</id_jinete>
             <fecha_inicio>2265-03-05</fecha_inicio>
             <fecha_fin></fecha_fin>
-        </jinete_monta>
-        <jinete_monta>
+        </pareja>
+        <pareja>
             <id_dragon>3</id_dragon>
             <id_jinete>8</id_jinete>
             <fecha_inicio>2267-07-09</fecha_inicio>
             <fecha_fin></fecha_fin>
-        </jinete_monta>
+        </pareja>
     <parejas>        
 
