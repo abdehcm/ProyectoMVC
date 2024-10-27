@@ -105,19 +105,19 @@
             <id_dragon>1</id_dragon>
             <id_jinete>6</id_jinete>
             <fecha_inicio>2263-01-11</fecha_inicio>
-            <fecha_fin></fecha_fin>
+            <fecha_fin>2278-03-23</fecha_fin>
         </pareja>
         <pareja>
             <id_dragon>2</id_dragon>
             <id_jinete>7</id_jinete>
             <fecha_inicio>2265-03-05</fecha_inicio>
-            <fecha_fin></fecha_fin>
+            <fecha_fin>2266-12-09</fecha_fin>
         </pareja>
         <pareja>
             <id_dragon>3</id_dragon>
             <id_jinete>8</id_jinete>
             <fecha_inicio>2267-07-09</fecha_inicio>
-            <fecha_fin></fecha_fin>
+            <fecha_fin>2269-09-13</fecha_fin>
         </pareja>
     </parejas>        
 </cuartel>
