@@ -4,14 +4,27 @@
  */
 package com.mycompany.mvc;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author alumnadotarde
  */
-class Dragon {
 
+@XmlRootElement(name = "dragon")
+@XmlType(propOrder = {"nombre", "apellidos", "sexo", "raza", "fecha_eclosion", "fecha_incorporacion", "alzada", "largura", "envergadura", "alcance_llamarada" })
+public class Dragon {
+    
+    int id;
     String nombre, apellidos, sexo, raza, fechaEclosion, fechaIncorporacion;
     Double alzada, largura, envergadura, alcanceLlamarada;
+    
+    public Dragon() {
+        
+    }
 
     public Dragon(String nombre, String apellidos, String sexo, String raza,
             String fechaEclosion, String fechaIncorporacion, Double alzada,
@@ -27,7 +40,16 @@ class Dragon {
         this.envergadura = envergadura;
         this.alcanceLlamarada = alcanceLlamarada;
     }
+    
+    @XmlAttribute(name = "id")
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    @XmlElement(name = "nombre")
     public String getNombre() {
         return nombre;
     }
@@ -35,7 +57,7 @@ class Dragon {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    @XmlElement(name = "apellidos")
     public String getApellidos() {
         return apellidos;
     }
@@ -43,7 +65,8 @@ class Dragon {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-
+    
+    @XmlElement(name = "sexo")
     public String getSexo() {
         return sexo;
     }
@@ -51,7 +74,8 @@ class Dragon {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-
+    
+    @XmlElement(name = "raza")
     public String getRaza() {
         return raza;
     }
@@ -59,7 +83,8 @@ class Dragon {
     public void setRaza(String raza) {
         this.raza = raza;
     }
-
+    
+    @XmlElement(name = "fecha_eclosion")
     public String getFechaEclosion() {
         return fechaEclosion;
     }
@@ -67,7 +92,8 @@ class Dragon {
     public void setFechaEclosion(String fechaEclosion) {
         this.fechaEclosion = fechaEclosion;
     }
-
+    
+    @XmlElement(name = "fecha_incorporacion")
     public String getFechaIncorporacion() {
         return fechaIncorporacion;
     }
@@ -75,7 +101,8 @@ class Dragon {
     public void setFechaIncorporacion(String fechaIncorporacion) {
         this.fechaIncorporacion = fechaIncorporacion;
     }
-
+    
+    @XmlElement(name = "alzada")
     public Double getAlzada() {
         return alzada;
     }
@@ -83,7 +110,8 @@ class Dragon {
     public void setAlzada(Double alzada) {
         this.alzada = alzada;
     }
-
+    
+    @XmlElement(name = "largura")
     public Double getLargura() {
         return largura;
     }
@@ -91,7 +119,8 @@ class Dragon {
     public void setLargura(Double largura) {
         this.largura = largura;
     }
-
+    
+    @XmlElement(name = "envergadura")
     public Double getEnvergadura() {
         return envergadura;
     }
@@ -99,7 +128,7 @@ class Dragon {
     public void setEnvergadura(Double envergadura) {
         this.envergadura = envergadura;
     }
-
+    @XmlElement(name = "alcance_llamarada")
     public Double getAlcanceLlamarada() {
         return alcanceLlamarada;
     }
