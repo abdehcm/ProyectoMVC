@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlRootElement(name = "dragon")
-@XmlType(propOrder = {"nombre", "apellidos", "sexo", "raza", "fecha_eclosion", "fecha_incorporacion", "alzada", "largura", "envergadura", "alcance_llamarada" })
+@XmlType(propOrder = {"nombre", "apellidos", "sexo", "raza", "fechaEclosion", "fechaIncorporacion", "alzada", "largura", "envergadura", "alcanceLlamarada" })
 public class Dragon {
     
     int id;
@@ -26,9 +26,11 @@ public class Dragon {
         
     }
 
-    public Dragon(String nombre, String apellidos, String sexo, String raza,
+    public Dragon(int id, String nombre, String apellidos, String sexo, String raza,
             String fechaEclosion, String fechaIncorporacion, Double alzada,
             Double largura, Double envergadura, Double alcanceLlamarada) {
+        
+        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.sexo = sexo;
@@ -135,6 +137,11 @@ public class Dragon {
 
     public void setAlcanceLlamarada(Double alcanceLlamarada) {
         this.alcanceLlamarada = alcanceLlamarada;
+    }
+
+    @Override
+    public String toString() {
+        return "Dragon{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", sexo=" + sexo + ", raza=" + raza + ", fechaEclosion=" + fechaEclosion + ", fechaIncorporacion=" + fechaIncorporacion + ", alzada=" + alzada + ", largura=" + largura + ", envergadura=" + envergadura + ", alcanceLlamarada=" + alcanceLlamarada + '}';
     }
     
 

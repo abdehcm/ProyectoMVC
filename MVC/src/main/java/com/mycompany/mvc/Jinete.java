@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author alumnadotarde
  */
 @XmlRootElement(name = "jinete")
-@XmlType(propOrder = {"nombre", "apellidos", "sexo", "fecha_nacimiento", "fecha_incorporacion", "altura", "mano_dominante", "rango militar", "ocupacion"})
+@XmlType(propOrder = {"nombre", "apellidos", "sexo", "fechaNacimiento", "fechaIncorporacion", "altura", "manoDominante", "rangoMilitar", "ocupacion"})
 public class Jinete {
 
     int id;
@@ -26,9 +26,11 @@ public class Jinete {
         
     }
 
-    public Jinete(String nombre, String apellidos, String sexo, String fechaNacimiento,
+    public Jinete(int id, String nombre, String apellidos, String sexo, String fechaNacimiento,
             String fechaIncorporacion, String manoDominante, String rangoMilitar,
             String ocupacion, Double altura) {
+        
+        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.sexo = sexo;
@@ -123,6 +125,11 @@ public class Jinete {
 
     public void setAltura(Double altura) {
         this.altura = altura;
+    }
+
+    @Override
+    public String toString() {
+        return "Jinete{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + ", fechaIncorporacion=" + fechaIncorporacion + ", manoDominante=" + manoDominante + ", rangoMilitar=" + rangoMilitar + ", ocupacion=" + ocupacion + ", altura=" + altura + '}';
     }
 
 }
