@@ -38,12 +38,68 @@ public class CuartelVista {
         double envergadura = sc.nextDouble();
         System.out.println("Introduzca el alcance de llamarada del nuevo dragón: ");
         double alcanceLlamarada = sc.nextDouble();
-        
 
         Dragon dragon = new Dragon(id, nombre, apellidos, sexo, raza, fechaEclosion, fechaIncorporacion, alzada, largura, envergadura, alcanceLlamarada);
-        
+
         return dragon;
-        
+
     }
+
+    static Jinete crearJinete() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Introduzca el Id del nuevo jinete: ");
+        int id = sc.nextInt();
+        System.out.println("Introduzca el nombre del nuevo jinete: ");
+        String nombre = sc.nextLine();
+        System.out.println("Introduzca los apellidos del nuevo jinete: ");
+        String apellidos = sc.nextLine();
+        System.out.println("Introduzca el sexo del nuevo jinete: ");
+        String sexo = sc.nextLine();
+        System.out.println("Introduzca la fecha de nacimiento del nuevo jinete: ");
+        String fechaNacimiento = sc.nextLine();
+        System.out.println("Introduzca la fecha de incorporación del nuevo jinete: ");
+        String fechaIncorporacion = sc.nextLine();
+        System.out.println("Introduzca la mano dominante del nuevo jinete: ");
+        String manoDominante = sc.nextLine();
+        System.out.println("Introduzca el rango militar del nuevo jinete: ");
+        String rangoMilitar = sc.nextLine();
+        System.out.println("Introduzca la ocupación del nuevo jinete: ");
+        String ocupacion = sc.nextLine();
+        System.out.println("Introduzca la altura del nuevo jinete: ");
+        double altura = sc.nextDouble();
+
+        Jinete jinete = new Jinete(id, nombre, apellidos, sexo, fechaNacimiento, fechaIncorporacion, manoDominante, rangoMilitar, ocupacion, altura);
+
+        return jinete;
+
+    }
+
+    /*static Pareja crearPareja() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Introduzca el Id del nuevo jinete: ");
+        int idDragon = sc.nextInt();
+        System.out.println("Introduzca el nombre del nuevo jinete: ");
+        String nombre = sc.nextLine();
+        System.out.println("Introduzca los apellidos del nuevo jinete: ");
+        String apellidos = sc.nextLine();
+        System.out.println("Introduzca el sexo del nuevo jinete: ");
+        String sexo = sc.nextLine();
+        System.out.println("Introduzca la fecha de nacimiento del nuevo jinete: ");
+        String fechaNacimiento = sc.nextLine();
+        System.out.println("Introduzca la fecha de incorporación del nuevo jinete: ");
+        String fechaIncorporacion = sc.nextLine();
+        System.out.println("Introduzca la mano dominante del nuevo jinete: ");
+        String manoDominante = sc.nextLine();
+        System.out.println("Introduzca el rango militar del nuevo jinete: ");
+        String rangoMilitar = sc.nextLine();
+        System.out.println("Introduzca la ocupación del nuevo jinete: ");
+        String ocupacion = sc.nextLine();
+        System.out.println("Introduzca la altura del nuevo jinete: ");
+        double altura = sc.nextDouble();
+
+    }*/
 
 }
