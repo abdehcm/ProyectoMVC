@@ -82,13 +82,13 @@ public class CuartelVista {
         System.out.println("Introduzca el Id del dragón: ");
         int idDragon = sc.nextInt();
         System.out.println("Introduzca el Id del jinete: ");
-        String idJinete = sc.nextLine();
+        int idJinete = sc.nextInt();
         System.out.println("Introduzca la fecha de inicio de la pareja: ");
         String fechaInicio = sc.nextLine();
         System.out.println("Introduzca la fecha de fin de la pareja: ");
         String fechaFin = sc.nextLine();
 
-        Pareja pareja = new Pareja(idDragon, idDragon, fechaInicio, fechaFin);
+        Pareja pareja = new Pareja(idDragon, idJinete, fechaInicio, fechaFin);
 
         return pareja;
 
