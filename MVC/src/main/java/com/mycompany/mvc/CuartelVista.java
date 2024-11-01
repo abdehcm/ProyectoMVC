@@ -76,30 +76,22 @@ public class CuartelVista {
 
     }
 
-    /*static Pareja crearPareja() {
+    static Pareja crearPareja() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Introduzca el Id del nuevo jinete: ");
+        System.out.println("Introduzca el Id del dragón: ");
         int idDragon = sc.nextInt();
-        System.out.println("Introduzca el nombre del nuevo jinete: ");
-        String nombre = sc.nextLine();
-        System.out.println("Introduzca los apellidos del nuevo jinete: ");
-        String apellidos = sc.nextLine();
-        System.out.println("Introduzca el sexo del nuevo jinete: ");
-        String sexo = sc.nextLine();
-        System.out.println("Introduzca la fecha de nacimiento del nuevo jinete: ");
-        String fechaNacimiento = sc.nextLine();
-        System.out.println("Introduzca la fecha de incorporación del nuevo jinete: ");
-        String fechaIncorporacion = sc.nextLine();
-        System.out.println("Introduzca la mano dominante del nuevo jinete: ");
-        String manoDominante = sc.nextLine();
-        System.out.println("Introduzca el rango militar del nuevo jinete: ");
-        String rangoMilitar = sc.nextLine();
-        System.out.println("Introduzca la ocupación del nuevo jinete: ");
-        String ocupacion = sc.nextLine();
-        System.out.println("Introduzca la altura del nuevo jinete: ");
-        double altura = sc.nextDouble();
+        System.out.println("Introduzca el Id del jinete: ");
+        String idJinete = sc.nextLine();
+        System.out.println("Introduzca la fecha de inicio de la pareja: ");
+        String fechaInicio = sc.nextLine();
+        System.out.println("Introduzca la fecha de fin de la pareja: ");
+        String fechaFin = sc.nextLine();
 
-    }*/
+        Pareja pareja = new Pareja(idDragon, idDragon, fechaInicio, fechaFin);
+
+        return pareja;
+
+    }
 
 }
