@@ -25,7 +25,6 @@ public class CuartelControlador {
     public void start() throws IOException, JAXBException {
 
         while (true) {
-
             int seleccion = vista.mostrarMenu();
 
             switch (seleccion) {
@@ -85,7 +84,7 @@ public class CuartelControlador {
                     System.out.println("¿Cuál es el id del dragón emparejado que desea eliminar?");
 
                     int idDragonEmparejadoParaEliminar = vista.sc.nextInt();
-
+                    
                     System.out.println("¿Cuál es el id del jinete emparejado que desea eliminar?");
 
                     int idJineteEmparejadoParaEliminar = vista.sc.nextInt();

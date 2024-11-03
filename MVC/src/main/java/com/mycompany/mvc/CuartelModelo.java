@@ -136,7 +136,6 @@ public class CuartelModelo {
 
     }
 
-
     public boolean comprobarDragonPorId(int id) throws JAXBException, IOException {
 
         Cuartel cuartel = leerXML();
@@ -151,7 +150,6 @@ public class CuartelModelo {
                 resultado = true;
             }
         }
-
         return resultado;
 
     }
@@ -170,7 +168,6 @@ public class CuartelModelo {
                 resultado = true;
             }
         }
-
         return resultado;
 
     }
@@ -189,7 +186,6 @@ public class CuartelModelo {
                 resultado = true;
             }
         }
-
         return resultado;
 
     }
