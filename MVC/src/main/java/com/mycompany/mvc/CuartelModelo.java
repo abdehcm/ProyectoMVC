@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -34,6 +35,14 @@ public class CuartelModelo {
         return cuartel;
     }
 
+    public void setCuartel(Cuartel cuartel) throws JAXBException, PropertyException, IOException {
+        this.cuartel = cuartel;
+        
+        //Actualizamos el contenido del XML cada vez que se modifique el objeto Cuartel.
+        
+        actualizarXML();
+    }
+
     public static Cuartel leerXML() throws JAXBException {
 
         // Lee el arhivo XML, crea un contexto y devuelve un objeto Cuartel.
@@ -51,9 +60,9 @@ public class CuartelModelo {
     public void mostrarContenido() throws JAXBException {
 
         //Se extraen las listas de objetos.
-        ArrayList<Dragon> listaDragones = cuartel.getDragones();
-        ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
-        ArrayList<Pareja> listaParejas = cuartel.getParejas();
+        CopyOnWriteArrayList<Dragon> listaDragones = cuartel.getDragones();
+        CopyOnWriteArrayList<Jinete> listaJinetes = cuartel.getJinetes();
+        CopyOnWriteArrayList<Pareja> listaParejas = cuartel.getParejas();
 
         //Se imprimen por pantalla los objetos de manera equivalente al XML leído.
         System.out.println("<cuartel>");
@@ -88,7 +97,7 @@ public class CuartelModelo {
     public void añadirDragon(Dragon dragon) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Dragon> listaDragones = cuartel.getDragones();
+        CopyOnWriteArrayList<Dragon> listaDragones = cuartel.getDragones();
 
         listaDragones.add(dragon);
 
@@ -96,14 +105,14 @@ public class CuartelModelo {
         cuartel.setDragones(listaDragones);
 
         //Guardamos los cambios en el XML.
-        actualizarArchivo();
+        actualizarXML();
 
     }
 
     public void añadirJinete(Jinete jinete) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
+        CopyOnWriteArrayList<Jinete> listaJinetes = cuartel.getJinetes();
 
         listaJinetes.add(jinete);
 
@@ -111,14 +120,14 @@ public class CuartelModelo {
         cuartel.setJinetes(listaJinetes);
 
         //Guardamos los cambios en el XML.
-        actualizarArchivo();
+        actualizarXML();
 
     }
 
     public void añadirPareja(Pareja pareja) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Pareja> listaParejas = cuartel.getParejas();
+        CopyOnWriteArrayList<Pareja> listaParejas = cuartel.getParejas();
 
         listaParejas.add(pareja);
 
@@ -126,33 +135,14 @@ public class CuartelModelo {
         cuartel.setParejas(listaParejas);
 
         //Guardamos los cambios en el XML.
-        actualizarArchivo();
+        actualizarXML();
 
     }
 
-    /*
-
-    public ArrayList<Integer> idDeDragones() throws JAXBException, IOException {
-
-        Cuartel cuartel = leerXML();
-
-        // Se crea una nueva lista que contiene la información previa
-        ArrayList<Dragon> listaDragones = cuartel.getDragones();
-        ArrayList<Integer> idDeDragones = null;
-
-        for (Dragon d : listaDragones) {
-            idDeDragones.add(d.getId());
-
-        }
-        return idDeDragones;
-
-    }
-    
-     */
     public boolean comprobarDragonPorId(int id) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Dragon> listaDragones = cuartel.getDragones();
+        CopyOnWriteArrayList<Dragon> listaDragones = cuartel.getDragones();
 
         // Se comprueba si ya existe un dragón con ese id.
         boolean resultado = false;
@@ -170,7 +160,7 @@ public class CuartelModelo {
     public boolean comprobarJinetePorId(int id) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
+        CopyOnWriteArrayList<Jinete> listaJinetes = cuartel.getJinetes();
 
         // Se comprueba si ya existe un jinete con ese id.
         boolean resultado = false;
@@ -188,7 +178,7 @@ public class CuartelModelo {
     public boolean comprobarParejaPorId(int idDragon, int idJinete) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Pareja> listaParejas = cuartel.getParejas();
+        CopyOnWriteArrayList<Pareja> listaParejas = cuartel.getParejas();
 
         // Se comprueba si ya existe una pareja con ese id.
         boolean resultado = false;
@@ -206,10 +196,10 @@ public class CuartelModelo {
     public void eliminarDragonPorId(int id) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Dragon> listaDragones = cuartel.getDragones();
+        CopyOnWriteArrayList<Dragon> listaDragones = cuartel.getDragones();
 
         for (Dragon d : listaDragones) {
-            if (d.id == id) {
+            if (d.getId() == id) {
                 listaDragones.remove(d);
             }
         }
@@ -218,14 +208,14 @@ public class CuartelModelo {
         cuartel.setDragones(listaDragones);
 
         //Guardamos los cambios en el XML.
-        actualizarArchivo();
+        actualizarXML();
 
     }
 
     public void eliminarJinetePorId(int id) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
+        CopyOnWriteArrayList<Jinete> listaJinetes = cuartel.getJinetes();
 
         for (Jinete j : listaJinetes) {
             if (j.id == id) {
@@ -237,14 +227,14 @@ public class CuartelModelo {
         cuartel.setJinetes(listaJinetes);
 
         //Guardamos los cambios en el XML.
-        actualizarArchivo();
+        actualizarXML();
 
     }
 
     public void eliminarParejaPorId(int idDragon, int idJinete) throws JAXBException, IOException {
 
         // Se crea una nueva lista que contiene la información previa
-        ArrayList<Pareja> listaParejas = cuartel.getParejas();
+        CopyOnWriteArrayList<Pareja> listaParejas = cuartel.getParejas();
 
         for (Pareja p : listaParejas) {
             if ((p.idDragon == idDragon) && (p.idJinete == idJinete)) {
@@ -255,36 +245,15 @@ public class CuartelModelo {
         // Actualizamos la lista de parejas al introducir como parámetro la nueva lista con el elemento eliminado:
         cuartel.setParejas(listaParejas);
 
-        actualizarArchivo();
+        actualizarXML();
 
     }
-
-    /*  public void modificarDragonPorId(int id) throws JAXBException, IOException {
-
-        // Se crea una nueva lista que contiene la información previa
-        ArrayList<Dragon> listaDragones = cuartel.getDragones();
-
-        boolean resultado = false;
-
-        for (Dragon d : listaDragones) {
-            if (d.id == id) {
-                
-            }
-        }
-
-
-        // Actualizamos la lista de dragones al introducir como parámetro la nueva lista con el elemento nuevo:
-        cuartel.setDragones(listaDragones);
-
-        actualizarArchivo(cuartel);
-
-    }
-     */
+    
     public String consultarPorId(int id) throws JAXBException, IOException {
 
         // Se crean dos nuevas listas que contienen la información previa
-        ArrayList<Dragon> listaDragones = cuartel.getDragones();
-        ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
+        CopyOnWriteArrayList<Dragon> listaDragones = cuartel.getDragones();
+        CopyOnWriteArrayList<Jinete> listaJinetes = cuartel.getJinetes();
 
         String resultado = "No se ha encontrado ningún resultado";
 
@@ -304,7 +273,7 @@ public class CuartelModelo {
         return resultado;
     }
 
-    private void actualizarArchivo() throws PropertyException, JAXBException, IOException {
+    private void actualizarXML() throws PropertyException, JAXBException, IOException {
 
         // Actualizamos el XML con los cambios realizados sobre el archivo con los otros métodos
         // Creamos un contexto de JAXB

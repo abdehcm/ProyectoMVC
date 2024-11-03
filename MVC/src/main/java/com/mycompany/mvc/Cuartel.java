@@ -5,6 +5,7 @@
 package com.mycompany.mvc;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -22,15 +23,15 @@ public class Cuartel {
     String nombre;
     String direccion;
     String provincia;
-    ArrayList<Dragon> listaDragones;
-    ArrayList<Jinete> listaJinetes;
-    ArrayList<Pareja> listaParejas;
+    CopyOnWriteArrayList<Dragon> listaDragones;
+    CopyOnWriteArrayList<Jinete> listaJinetes;
+    CopyOnWriteArrayList<Pareja> listaParejas;
 
     public Cuartel() {
 
     }
 
-    public Cuartel(String nombre, String direccion, String provincia, ArrayList<Dragon> listaDragones, ArrayList<Jinete> listaJinetes, ArrayList<Pareja> listaParejas) {
+    public Cuartel(String nombre, String direccion, String provincia, CopyOnWriteArrayList<Dragon> listaDragones, CopyOnWriteArrayList<Jinete> listaJinetes, CopyOnWriteArrayList<Pareja> listaParejas) {
         
         this.nombre = nombre;
         this.direccion = direccion;
@@ -68,30 +69,30 @@ public class Cuartel {
     }
     @XmlElementWrapper(name = "dragones")
     @XmlElement(name = "dragon")
-    public ArrayList<Dragon> getDragones() {
+    public CopyOnWriteArrayList<Dragon> getDragones() {
         return listaDragones;
     }
 
-    public void setDragones(ArrayList<Dragon> dragones) {
+    public void setDragones(CopyOnWriteArrayList<Dragon> dragones) {
         this.listaDragones = dragones;
     }
     @XmlElementWrapper(name = "jinetes")
     @XmlElement(name = "jinete")
-    public ArrayList<Jinete> getJinetes() {
+    public CopyOnWriteArrayList<Jinete> getJinetes() {
         return listaJinetes;
     }
 
-    public void setJinetes(ArrayList<Jinete> jinetes) {
+    public void setJinetes(CopyOnWriteArrayList<Jinete> jinetes) {
         this.listaJinetes = jinetes;
     }
     
     @XmlElementWrapper(name = "parejas")
     @XmlElement(name = "pareja")
-    public ArrayList<Pareja> getParejas() {
+    public CopyOnWriteArrayList<Pareja> getParejas() {
         return listaParejas;
     }
 
-    public void setParejas(ArrayList<Pareja> parejas) {
+    public void setParejas(CopyOnWriteArrayList<Pareja> parejas) {
         this.listaParejas = parejas;
     }
 

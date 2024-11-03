@@ -4,6 +4,7 @@
  */
 package com.mycompany.mvc;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import javax.xml.bind.JAXBException;
 
@@ -12,24 +13,30 @@ import javax.xml.bind.JAXBException;
  * @author alumnadotarde
  */
 public class CuartelVista {
-    
-    //Añadimos un Scanner como atributo de la clase para facilitar su manejo en los métodos.
 
-    public Scanner sc;
+    //Añadimos un Scanner como atributo de la clase para facilitar su manejo en los métodos.
+    private Scanner sc;
 
     public CuartelVista() {
         this.sc = new Scanner(System.in);
     }
 
-    public int mostrarMenu() throws JAXBException {
+    public Scanner getSc() {
+        return sc;
+    }
 
-        System.out.println("Seleccione una opción: \n"
-                + "(1) Mostrar el contenido del XML"
-                + "(2) Añadir un nuevo elemento"
-                + "(3) Eliminar un elemento"
-                + "(4) Modificar un elemento"
-                + "(5) Realizar un consulta"
-                + "(6) Salir del programa");
+    public int mostrarMenu() throws JAXBException, InputMismatchException {
+        
+        //Menú pricipal del programa, con todas las opciones disponibles.
+        //Cada operación que requiere un intercambio de variables va al controlador con un código de retorno
+
+        System.out.println("Seleccione una opción:"
+                + "\n(1) Mostrar el contenido del XML"
+                + "\n(2) Añadir un nuevo elemento"
+                + "\n(3) Eliminar un elemento"
+                + "\n(4) Modificar un elemento"
+                + "\n(5) Realizar un consulta"
+                + "\n(6) Salir del programa");
 
         int id = sc.nextInt();
 
@@ -37,10 +44,10 @@ public class CuartelVista {
             case 1:
                 return 1;
             case 2:
-                System.out.println("¿Qué desea añadir? \n"
-                        + "(1) Añadir un dragón"
-                        + "(2) Añadir un jinete"
-                        + "(3) Añadir una pareja");
+                System.out.println("¿Qué desea añadir?"
+                        + "\n(1) Añadir un dragón"
+                        + "\n(2) Añadir un jinete"
+                        + "\n(3) Añadir una pareja");
                 id = sc.nextInt();
                 switch (id) {
                     case 1:
@@ -53,10 +60,10 @@ public class CuartelVista {
                         mostrarMenu();
                 }
             case 3:
-                System.out.println("¿Qué desea eliminar? \n"
-                        + "(1) Eliminar un dragón"
-                        + "(2) Eliminar un jinete"
-                        + "(3) Eliminar una pareja");
+                System.out.println("¿Qué desea eliminar?"
+                        + "\n(1) Eliminar un dragón"
+                        + "\n(2) Eliminar un jinete"
+                        + "\n(3) Eliminar una pareja");
                 id = sc.nextInt();
                 switch (id) {
                     case 1:
@@ -69,13 +76,13 @@ public class CuartelVista {
                         mostrarMenu();
                 }
             case 4:
-                System.out.println("¿Qué desea modificar? \n"
-                        + "(1) Modificar un dragón"
-                        + "(2) Modificar un jinete"
-                        + "(3) Modificar una pareja"
-                        + "(4) Modificar el nombre del cuartel"
-                        + "(5) Modificar la dirección del cuartel"
-                        + "(6) Modificar la provincia del cuartel");
+                System.out.println("¿Qué desea modificar?"
+                        + "\n(1) Modificar un dragón"
+                        + "\n(2) Modificar un jinete"
+                        + "\n(3) Modificar una pareja"
+                        + "\n(4) Modificar el nombre del cuartel"
+                        + "\n(5) Modificar la dirección del cuartel"
+                        + "\n(6) Modificar la provincia del cuartel");
                 id = sc.nextInt();
                 switch (id) {
                     case 1:
@@ -94,19 +101,17 @@ public class CuartelVista {
                         mostrarMenu();
                 }
             case 5:
-                System.out.println("¿Qué desea consultar? \n"
-                        + "(1) Consultar si existe un dragón o jinete"
-                        + "(2) Consultar si un dragón o jinete están emparejados"
-                        + "(3) Consultar nombres y apellidos de los dragones"
-                        + "(4) Consultar nombres y apellidos de los jinetes"
-                        + "(5) Consultar dragones por sexo"
-                        + "(6) Consultar dragones por raza"
-                        + "(7) Consultar dragón con mayores proporciones (alzada x largura x envergadura)"
-                        + "(8) Consultar dragón con mayor alcalce de llamarada"
-                        + "(9) Consultar jinetes por su mano dominante"
-                        + "(10) Consultar jinetes por su rango militar"
-                        + "(11) Consultar jinetes por su ocupación"
-                        + "(12) Consultar parejas por su sexo de sus miembros");
+                System.out.println("¿Qué desea consultar?"
+                        + "\n(1) Consultar si existe un dragón o jinete"
+                        + "\n(2) Consultar si un dragón o jinete están emparejados"
+                        + "\n(3) Consultar nombres y apellidos de los dragones"
+                        + "\n(4) Consultar nombres y apellidos de los jinetes"
+                        + "\n(5) Consultar dragones por sexo"
+                        + "\n(6) Consultar dragones por raza"
+                        + "\n(7) Consultar dragón con mayores proporciones (alzada x largura x envergadura)"
+                        + "\n(8) Consultar dragón con mayor alcalce de llamarada"
+                        + "\n(9) Consultar jinetes por su mano dominante"
+                        + "\n(10) Consultar jinetes por su rango militar");
                 id = sc.nextInt();
                 switch (id) {
                     case 1:
@@ -129,15 +134,12 @@ public class CuartelVista {
                         return 59;
                     case 10:
                         return 510;
-                    case 11:
-                        return 511;
-                    case 12:
-                        return 512;
                     default:
                         mostrarMenu();
                 }
 
             case 6:
+                System.out.println("El programa ha terminado");
                 System.exit(0);
             default:
                 mostrarMenu();
@@ -155,6 +157,7 @@ public class CuartelVista {
         int id = sc.nextInt();
         System.out.println("Introduzca el nombre del nuevo dragón: ");
         String nombre = sc.nextLine();
+        sc.nextLine();
         System.out.println("Introduzca los apellidos del nuevo dragón: ");
         String apellidos = sc.nextLine();
         System.out.println("Introduzca el sexo del nuevo dragón: ");
@@ -186,6 +189,7 @@ public class CuartelVista {
         int id = sc.nextInt();
         System.out.println("Introduzca el nombre del nuevo jinete: ");
         String nombre = sc.nextLine();
+        sc.nextLine();
         System.out.println("Introduzca los apellidos del nuevo jinete: ");
         String apellidos = sc.nextLine();
         System.out.println("Introduzca el sexo del nuevo jinete: ");
@@ -225,11 +229,13 @@ public class CuartelVista {
         return pareja;
 
     }
-    
+
     public Dragon modificarDragon(int id) {
-        
+
         System.out.println("Introduzca el nombre del nuevo dragón: ");
         String nombre = sc.nextLine();
+        sc.nextLine();
+
         System.out.println("Introduzca los apellidos del nuevo dragón: ");
         String apellidos = sc.nextLine();
         System.out.println("Introduzca el sexo del nuevo dragón: ");
@@ -255,4 +261,49 @@ public class CuartelVista {
 
     }
 
+    public Jinete modificarJinete(int id) {
+
+        System.out.println("Introduzca el nombre del nuevo jinete: ");
+        String nombre = sc.nextLine();
+        sc.nextLine();
+
+        System.out.println("Introduzca los apellidos del nuevo jinete: ");
+        String apellidos = sc.nextLine();
+        System.out.println("Introduzca el sexo del nuevo jinete: ");
+        String sexo = sc.nextLine();
+        System.out.println("Introduzca la fecha de nacimiento del nuevo jinete: ");
+        String fechaNacimiento = sc.nextLine();
+        System.out.println("Introduzca la fecha de incorporación del nuevo jinete: ");
+        String fechaIncorporacion = sc.nextLine();
+        System.out.println("Introduzca la mano dominante del nuevo jinete: ");
+        String manoDominante = sc.nextLine();
+        System.out.println("Introduzca el rango militar del nuevo jinete: ");
+        String rangoMilitar = sc.nextLine();
+        System.out.println("Introduzca la ocupación del nuevo jinete: ");
+        String ocupacion = sc.nextLine();
+        System.out.println("Introduzca la altura del nuevo jinete: ");
+        double altura = sc.nextDouble();
+
+        Jinete jinete = new Jinete(id, nombre, apellidos, sexo, fechaNacimiento, fechaIncorporacion, manoDominante, rangoMilitar, ocupacion, altura);
+
+        return jinete;
+
+    }
+
+    public Pareja modificarPareja(int idDragon, int idJinete) {
+
+        System.out.println("Introduzca el Id del dragón: ");
+        idDragon = sc.nextInt();
+        System.out.println("Introduzca el Id del jinete: ");
+        idJinete = sc.nextInt();
+        System.out.println("Introduzca la fecha de inicio de la pareja: ");
+        String fechaInicio = sc.nextLine();
+        System.out.println("Introduzca la fecha de fin de la pareja: ");
+        String fechaFin = sc.nextLine();
+
+        Pareja pareja = new Pareja(idDragon, idJinete, fechaInicio, fechaFin);
+
+        return pareja;
+
+    }
 }
