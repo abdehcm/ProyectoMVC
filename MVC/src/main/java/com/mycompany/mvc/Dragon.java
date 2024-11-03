@@ -141,7 +141,7 @@ public class Dragon {
 
     @Override
     public String toString() {
-        return "Dragon{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", sexo=" + sexo + ", raza=" + raza + ", fechaEclosion=" + fechaEclosion + ", fechaIncorporacion=" + fechaIncorporacion + ", alzada=" + alzada + ", largura=" + largura + ", envergadura=" + envergadura + ", alcanceLlamarada=" + alcanceLlamarada + '}';
+        return "\t\t<dragon id=" + id + ">\n \t\t\t<nombre>" + nombre + "</nombre>\n \t\t\t<apellidos>" + apellidos + "</apellidos> \n \t\t\t<sexo>" + sexo + "</sexo>\n \t\t\t<raza>" + raza + "</raza> \n\t\t\t<fecha_eclosion>" + fechaEclosion + "</fecha_eclosion>\n \t\t\t<fecha_incorporacion>" + fechaIncorporacion + "</fecha_incorporacion>\n\t\t\t<alzada>" + alzada + "</alzada>\n \t\t\t<largura>" + largura + "</largura>\n \t\t\t<envergadura>" + envergadura + "</envergadura> \n \t\t\t<alcance_llamarada>" + alcanceLlamarada + "</alcance_llamarada>\n \t\t</dragon>\n";
     }
     
 

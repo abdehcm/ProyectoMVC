@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "pareja")
 @XmlType(propOrder = { "idDragon", "idJinete", "fechaInicio", "fechaFin" })
-class Pareja {
+public class Pareja {
     int idDragon, idJinete;
     String fechaInicio, fechaFin;
     
@@ -68,6 +68,6 @@ class Pareja {
 
     @Override
     public String toString() {
-        return "Pareja{" + "idDragon=" + idDragon + ", idJinete=" + idJinete + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + '}';
+        return "\t\t<pareja>\n \t\t\t<id_dragon>" + idDragon + "</id_dragon>\n \t\t\t<id_jinete>" + idJinete + "</id_jinete>\n \t\t\t<fecha_inicio>" + fechaInicio + "</fecha_inicio>\n \t\t\t<fecha_fin>" + fechaFin + "</fecha_fin>\n \t\t</pareja>\n";
     }
 }

@@ -5,6 +5,7 @@
 package com.mycompany.mvc;
 
 import java.util.Scanner;
+import javax.xml.bind.JAXBException;
 
 /**
  *
@@ -12,7 +13,87 @@ import java.util.Scanner;
  */
 public class CuartelVista {
 
-    static Dragon crearDragon() {
+    public Scanner sc;
+    
+    public CuartelVista() {
+        this.sc = new Scanner(System.in);
+    }
+
+    public int mostrarMenu() throws JAXBException {
+
+        System.out.println("Seleccione una opción: \n"
+                + "(1) Mostrar el contenido del XML"
+                + "(2) Añadir un nuevo elemento"
+                + "(3) Eliminar un elemento"
+                + "(4) Modificar un elemento"
+                + "(5) Salir del programa");
+
+        int id = sc.nextInt();
+
+        switch (id) {
+            case 1:
+                return 1;
+            case 2:
+                System.out.println("¿Qué desea añadir? \n"
+                        + "(1) Añadir un dragón"
+                        + "(2) Añadir un jinete"
+                        + "(3) Añadir una pareja");
+                id = sc.nextInt();
+                switch (id) {
+                    case 1:
+                        return 21;
+                    case 2:
+                        return 22;
+                    case 3:
+                        return 23;
+                    default:
+                        mostrarMenu();
+                }
+            case 3:
+                System.out.println("¿Qué desea eliminar? \n"
+                        + "(1) Eliminar un dragón"
+                        + "(2) Eliminar un jinete"
+                        + "(3) Eliminar una pareja");
+                id = sc.nextInt();
+                switch (id) {
+                    case 1:
+                        return 31;
+                    case 2:
+                        return 32;
+                    case 3:
+                        return 33;
+                    default:
+                        mostrarMenu();
+                }
+            case 4:
+                System.out.println("¿Qué desea modificar? \n"
+                        + "(1) Modificar un dragón"
+                        + "(2) Modificar un jinete"
+                        + "(3) Modificar una pareja");
+                id = sc.nextInt();
+                switch (id) {
+                    case 1:
+                        return 41;
+                    case 2:
+                        return 42;
+                    case 3:
+                        return 43;
+                    default:
+                        mostrarMenu();
+                }
+            case 5:
+                System.exit(0);
+            default:
+                mostrarMenu();
+        }
+        return id;
+    }
+    
+    public void mensaje(String texto) {
+        System.out.println(texto);
+    }
+
+    public Dragon crearDragon() {
 
         Scanner sc = new Scanner(System.in);
 
@@ -45,7 +126,7 @@ public class CuartelVista {
 
     }
 
-    static Jinete crearJinete() {
+    public Jinete crearJinete() {
 
         Scanner sc = new Scanner(System.in);
 
@@ -76,7 +157,8 @@ public class CuartelVista {
 
     }
 
-    static Pareja crearPareja() {
+    public Pareja crearPareja() {
+
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Introduzca el Id del dragón: ");

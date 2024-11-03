@@ -129,7 +129,7 @@ public class Jinete {
 
     @Override
     public String toString() {
-        return "Jinete{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + ", fechaIncorporacion=" + fechaIncorporacion + ", manoDominante=" + manoDominante + ", rangoMilitar=" + rangoMilitar + ", ocupacion=" + ocupacion + ", altura=" + altura + '}';
+        return "\t\t<jinete id=" + id + ">\n \t\t\t<nombre>" + nombre + "</nombre>\n \t\t\t<apellidos>" + apellidos + "</apellidos> \n \t\t\t<sexo>" + sexo + "</sexo>\n \t\t\t<fecha_nacimiento=" + fechaNacimiento + "</fecha_nacimiento>\n \t\t\t<fecha_incorporacion>" + fechaIncorporacion + "</fecha_incorporacion>\n \t\t\t<mano_dominante>" + manoDominante + "</mano_dominante>\n \t\t\t<rango_militar>" + rangoMilitar + "</rango_militar>\n \t\t\t<ocupacion>" + ocupacion + "</ocupacion>\n \t\t\t<altura>" + altura + "</altura>\n \t\t</jinete>\n";
     }
 
 }

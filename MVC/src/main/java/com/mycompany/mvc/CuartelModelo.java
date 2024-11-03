@@ -21,7 +21,7 @@ import javax.xml.bind.Unmarshaller;
  */
 public class CuartelModelo {
 
-    public static void mostrarContenido() throws JAXBException {
+    public static Cuartel leerXML() throws JAXBException {
 
         File f = new File("escuadrones.xml");
 
@@ -29,32 +29,51 @@ public class CuartelModelo {
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
         Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
+
+        return cuartel;
+
+    }
+
+    public void mostrarContenido() throws JAXBException {
+
+        Cuartel cuartel = leerXML();
 
         ArrayList<Dragon> listaDragones = cuartel.getDragones();
         ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
         ArrayList<Pareja> listaParejas = cuartel.getParejas();
 
+        System.out.println("<cuartel>");
+        System.out.println("\t<nombre>" + cuartel.getNombre() + "</nombre>");
+        System.out.println("\t<direccion>" + cuartel.getDireccion() + "</direccion>");
+        System.out.println("\t<provincia>" + cuartel.getProvincia() + "</provincia>");
+
+        System.out.println("\t<dragones>");
+
         for (Dragon d : listaDragones) {
-            System.out.println(d.toString());
+            System.out.print(d.toString());
         }
+
+        System.out.println("\t</dragones>");
+        System.out.println("\t<jinetes>");
 
         for (Jinete j : listaJinetes) {
-            System.out.println(j.toString());
+            System.out.print(j.toString());
         }
 
+        System.out.println("\t</jinetes>");
+        System.out.println("\t<parejas>");
+
         for (Pareja p : listaParejas) {
-            System.out.println(p.toString());
+            System.out.print(p.toString());
         }
+        System.out.println("\t</parejas>");
+        System.out.println("</cuartel>");
 
     }
 
-    public static Cuartel anadirDragon(Dragon dragon) throws JAXBException, IOException {
+    public void añadirDragon(Dragon dragon) throws JAXBException, IOException {
 
-        File f = new File("escuadrones.xml");
-
-        JAXBContext context = JAXBContext.newInstance(Cuartel.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
+        Cuartel cuartel = leerXML();
 
         // Se crea una nueva lista que contiene la información previa
         ArrayList<Dragon> listaDragones = cuartel.getDragones();
@@ -64,17 +83,13 @@ public class CuartelModelo {
         // Actualizamos la lista de dragones al introducir como parámetro la nueva lista con el elemento nuevo:
         cuartel.setDragones(listaDragones);
 
-        return cuartel;
+        actualizarArchivo(cuartel);
 
     }
 
-    public static Cuartel anadirJinete(Jinete jinete) throws JAXBException, IOException {
+    public void añadirJinete(Jinete jinete) throws JAXBException, IOException {
 
-        File f = new File("escuadrones.xml");
-
-        JAXBContext context = JAXBContext.newInstance(Cuartel.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
+        Cuartel cuartel = leerXML();
 
         // Se crea una nueva lista que contiene la información previa
         ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
@@ -84,17 +99,13 @@ public class CuartelModelo {
         // Actualizamos la lista de jinetes al introducir como parámetro la nueva lista con el elemento nuevo:
         cuartel.setJinetes(listaJinetes);
 
-        return cuartel;
+        actualizarArchivo(cuartel);
 
     }
 
-    public static Cuartel anadirPareja(Pareja pareja) throws JAXBException, IOException {
+    public void añadirPareja(Pareja pareja) throws JAXBException, IOException {
 
-        File f = new File("escuadrones.xml");
-
-        JAXBContext context = JAXBContext.newInstance(Cuartel.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
+        Cuartel cuartel = leerXML();
 
         // Se crea una nueva lista que contiene la información previa
         ArrayList<Pareja> listaParejas = cuartel.getParejas();
@@ -104,17 +115,88 @@ public class CuartelModelo {
         // Actualizamos la lista de parejas al introducir como parámetro la nueva lista con el elemento nuevo:
         cuartel.setParejas(listaParejas);
 
-        return cuartel;
+        actualizarArchivo(cuartel);
+
+    }
+    
+    public ArrayList<Integer> idDeDragones() throws JAXBException, IOException {
+
+        Cuartel cuartel = leerXML();
+
+        // Se crea una nueva lista que contiene la información previa
+        ArrayList<Dragon> listaDragones = cuartel.getDragones();
+        ArrayList<Integer> idDeDragones = null;
+        
+
+        for (Dragon d : listaDragones) {
+            idDeDragones.add(d.getId());
+
+            }
+        return idDeDragones;
 
     }
 
-    public static Cuartel eliminarDragonPorId(int id) throws JAXBException, IOException {
 
-        File f = new File("escuadrones.xml");
+    public boolean comprobarDragonPorId(int id) throws JAXBException, IOException {
 
-        JAXBContext context = JAXBContext.newInstance(Cuartel.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
+        Cuartel cuartel = leerXML();
+
+        // Se crea una nueva lista que contiene la información previa
+        ArrayList<Dragon> listaDragones = cuartel.getDragones();
+
+        boolean resultado = false;
+
+        for (Dragon d : listaDragones) {
+            if (d.id == id) {
+                resultado = true;
+            }
+        }
+
+        return resultado;
+
+    }
+
+    public boolean comprobarJinetePorId(int id) throws JAXBException, IOException {
+
+        Cuartel cuartel = leerXML();
+
+        // Se crea una nueva lista que contiene la información previa
+        ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
+
+        boolean resultado = false;
+
+        for (Jinete j : listaJinetes) {
+            if (j.id == id) {
+                resultado = true;
+            }
+        }
+
+        return resultado;
+
+    }
+
+    public boolean comprobarParejaPorId(int idDragon, int idJinete) throws JAXBException, IOException {
+
+        Cuartel cuartel = leerXML();
+
+        // Se crea una nueva lista que contiene la información previa
+        ArrayList<Pareja> listaParejas = cuartel.getParejas();
+
+        boolean resultado = false;
+
+        for (Pareja p : listaParejas) {
+            if ((p.idDragon == idDragon) && (p.idJinete == idJinete)) {
+                resultado = true;
+            }
+        }
+
+        return resultado;
+
+    }
+
+    public void eliminarDragonPorId(int id) throws JAXBException, IOException {
+
+        Cuartel cuartel = leerXML();
 
         // Se crea una nueva lista que contiene la información previa
         ArrayList<Dragon> listaDragones = cuartel.getDragones();
@@ -137,17 +219,13 @@ public class CuartelModelo {
         // Actualizamos la lista de dragones al introducir como parámetro la nueva lista con el elemento nuevo:
         cuartel.setDragones(listaDragones);
 
-        return cuartel;
+        actualizarArchivo(cuartel);
 
     }
 
-    public static Cuartel eliminarJinetePorId(int id) throws JAXBException, IOException {
+    public void eliminarJinetePorId(int id) throws JAXBException, IOException {
 
-        File f = new File("escuadrones.xml");
-
-        JAXBContext context = JAXBContext.newInstance(Cuartel.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
+        Cuartel cuartel = leerXML();
 
         // Se crea una nueva lista que contiene la información previa
         ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
@@ -167,20 +245,16 @@ public class CuartelModelo {
             System.out.println("No se encuentra un jinete con ese Id.");
         }
 
-        // Actualizamos la lista de dragones al introducir como parámetro la nueva lista con el elemento nuevo:
+        // Actualizamos la lista de jinetes al introducir como parámetro la nueva lista con el elemento nuevo:
         cuartel.setJinetes(listaJinetes);
 
-        return cuartel;
+        actualizarArchivo(cuartel);
 
     }
 
-    public static Cuartel eliminarParejaPorId(int idDragon, int idJinete) throws JAXBException, IOException {
+    public void eliminarParejaPorId(int idDragon, int idJinete) throws JAXBException, IOException {
 
-        File f = new File("escuadrones.xml");
-
-        JAXBContext context = JAXBContext.newInstance(Cuartel.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
+        Cuartel cuartel = leerXML();
 
         // Se crea una nueva lista que contiene la información previa
         ArrayList<Pareja> listaParejas = cuartel.getParejas();
@@ -200,20 +274,16 @@ public class CuartelModelo {
             System.out.println("No se encuentra una pareja con esos Id.");
         }
 
-        // Actualizamos la lista de dragones al introducir como parámetro la nueva lista con el elemento nuevo:
+        // Actualizamos la lista de parejas al introducir como parámetro la nueva lista con el elemento nuevo:
         cuartel.setParejas(listaParejas);
 
-        return cuartel;
+        actualizarArchivo(cuartel);
 
     }
-    
-    public static Cuartel modificarDragonPorId(int id) throws JAXBException, IOException {
 
-        File f = new File("escuadrones.xml");
+  /*  public void modificarDragonPorId(int id) throws JAXBException, IOException {
 
-        JAXBContext context = JAXBContext.newInstance(Cuartel.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
+        Cuartel cuartel = leerXML();
 
         // Se crea una nueva lista que contiene la información previa
         ArrayList<Dragon> listaDragones = cuartel.getDragones();
@@ -222,35 +292,26 @@ public class CuartelModelo {
 
         for (Dragon d : listaDragones) {
             if (d.id == id) {
-                CuartelVista.crearDragon();
+                
             }
         }
 
-        if (resultado) {
-            System.out.println("El dragón se ha eliminado con éxito.");
-        } else {
-            System.out.println("No se encuentra un dragón con ese Id.");
-        }
 
         // Actualizamos la lista de dragones al introducir como parámetro la nueva lista con el elemento nuevo:
         cuartel.setDragones(listaDragones);
 
-        return cuartel;
+        actualizarArchivo(cuartel);
 
     }
+*/
+    public String consultarPorId(int id) throws JAXBException, IOException {
 
-    public static String consultarPorId(int id) throws JAXBException, IOException {
+        Cuartel cuartel = leerXML();
 
-        File f = new File("escuadrones.xml");
-
-        JAXBContext context = JAXBContext.newInstance(Cuartel.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Cuartel cuartel = (Cuartel) unmarshaller.unmarshal(f);
-
-        // Se crean dos nuevas lista que contienen la información previa
+        // Se crean dos nuevas listas que contienen la información previa
         ArrayList<Dragon> listaDragones = cuartel.getDragones();
         ArrayList<Jinete> listaJinetes = cuartel.getJinetes();
-        
+
         String resultado = "No se ha encontrado ningún resultado";
 
         for (Dragon d : listaDragones) {
@@ -265,11 +326,11 @@ public class CuartelModelo {
 
             }
         }
-        
+
         return resultado;
     }
 
-    public static void actualizarArchivo(Cuartel cuartel) throws PropertyException, JAXBException, IOException {
+    private void actualizarArchivo(Cuartel cuartel) throws PropertyException, JAXBException, IOException {
 
         // Actualizamos el XML con los cambios realizados sobre el archivo con los otros métodos
         // Creamos un contexto de JAXB
@@ -283,7 +344,7 @@ public class CuartelModelo {
         marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
         // Si se debe omitir la información del encabezado xml, no se omite // por defecto (falso)
         marshaller.setProperty(Marshaller.JAXB_FRAGMENT, false);
-        marshaller.marshal(cuartel, new FileWriter("escuadrones2.xml", StandardCharsets.UTF_8));
+        marshaller.marshal(cuartel, new FileWriter("escuadrones.xml", StandardCharsets.UTF_8));
         // Se crea el archivo XML
 
     }
