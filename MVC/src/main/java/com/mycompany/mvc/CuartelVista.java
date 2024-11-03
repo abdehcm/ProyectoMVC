@@ -14,7 +14,7 @@ import javax.xml.bind.JAXBException;
 public class CuartelVista {
 
     public Scanner sc;
-    
+
     public CuartelVista() {
         this.sc = new Scanner(System.in);
     }
@@ -88,7 +88,7 @@ public class CuartelVista {
         }
         return id;
     }
-    
+
     public void mensaje(String texto) {
         System.out.println(texto);
     }
