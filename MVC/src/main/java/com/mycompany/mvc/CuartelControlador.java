@@ -13,10 +13,13 @@ import javax.xml.bind.JAXBException;
  */
 public class CuartelControlador {
 
+    //Se toman como atributos objetos de las otras dos clases para manejarlos.
     private final CuartelModelo modelo;
     private final CuartelVista vista;
 
     public CuartelControlador(CuartelModelo modelo, CuartelVista vista) {
+
+        //El constructor inicializa los valores de ambod atributos de la clase
         this.modelo = modelo;
         this.vista = vista;
     }
@@ -25,6 +28,7 @@ public class CuartelControlador {
     public void start() throws IOException, JAXBException {
 
         while (true) {
+
             int seleccion = vista.mostrarMenu();
 
             switch (seleccion) {
@@ -84,7 +88,7 @@ public class CuartelControlador {
                     System.out.println("¿Cuál es el id del dragón emparejado que desea eliminar?");
 
                     int idDragonEmparejadoParaEliminar = vista.sc.nextInt();
-                    
+
                     System.out.println("¿Cuál es el id del jinete emparejado que desea eliminar?");
 
                     int idJineteEmparejadoParaEliminar = vista.sc.nextInt();
@@ -93,7 +97,7 @@ public class CuartelControlador {
                         modelo.eliminarParejaPorId(idDragonEmparejadoParaEliminar, idJineteEmparejadoParaEliminar);
                         vista.mensaje("La pareja se ha eliminado correctamente");
                     } else {
-                        vista.mensaje("No existe una parejas con esos identificadores");
+                        vista.mensaje("No existe una pareja con esos identificadores");
                     }
                     break;
             }
