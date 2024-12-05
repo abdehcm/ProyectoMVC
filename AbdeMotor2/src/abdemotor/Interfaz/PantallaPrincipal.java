@@ -4,9 +4,13 @@
  */
 package abdemotor.Interfaz;
 
-import abdemotor.PanelImagen.PanelConImagen;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import java.sql.*;
+import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -36,19 +40,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        jLabelMarca = new javax.swing.JLabel();
         jLabelTipoVehiculo = new javax.swing.JLabel();
-        jTextFieldPrecio = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabelPrecio = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jComboBoxMarca = new javax.swing.JComboBox<>();
-        jButtonBuscar = new javax.swing.JButton();
-        jComboBoxColor = new javax.swing.JComboBox<>();
-        jComboBoxTipo = new javax.swing.JComboBox<>();
+        jLabelMarca = new javax.swing.JLabel();
         jLabelColor = new javax.swing.JLabel();
-        jButtonSalir = new javax.swing.JButton();
+        jComboBoxTipo = new javax.swing.JComboBox<>();
+        jComboBoxMarca = new javax.swing.JComboBox<>();
+        jComboBoxColor = new javax.swing.JComboBox<>();
+        jButtonBuscar = new javax.swing.JButton();
+        jButtonTodosVehiculos = new javax.swing.JButton();
+        jButtonInsertarVehiculo = new javax.swing.JButton();
+        jLabelPrecio = new javax.swing.JLabel();
+        jTextFieldPrecio = new javax.swing.JTextField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -57,38 +59,75 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setPreferredSize(new java.awt.Dimension(630, 550));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 51));
-
-        jLabelMarca.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        jLabelMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMarca.setText("Marca:");
-
-        jLabelTipoVehiculo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        jLabelTipoVehiculo.setFont(new java.awt.Font("Helvetica", 1, 25)); // NOI18N
+        jLabelTipoVehiculo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTipoVehiculo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTipoVehiculo.setText("Tipo de vehículo:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(112, 63, 0, 0);
+        getContentPane().add(jLabelTipoVehiculo, gridBagConstraints);
 
-        jButton2.setText("Insertar Vehículo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jLabelMarca.setFont(new java.awt.Font("Helvetica", 1, 25)); // NOI18N
+        jLabelMarca.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMarca.setText("Marca:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 163, 0, 0);
+        getContentPane().add(jLabelMarca, gridBagConstraints);
 
-        jLabelPrecio.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabelPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelPrecio.setText("Precio:");
+        jLabelColor.setFont(new java.awt.Font("Helvetica", 1, 25)); // NOI18N
+        jLabelColor.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelColor.setText("Color:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(22, 163, 0, 0);
+        getContentPane().add(jLabelColor, gridBagConstraints);
 
-        jButton1.setText("Todos los Vehículos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Deportivo", "Sedán", "SUV" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 35;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(112, 101, 0, 0);
+        getContentPane().add(jComboBoxTipo, gridBagConstraints);
 
         jComboBoxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mercedes", "Audi", "Lamborghini", "Ferrari" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 101, 0, 0);
+        getContentPane().add(jComboBoxMarca, gridBagConstraints);
+
+        jComboBoxColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Negro", "Blanco", "Gris metalizado", "Plata ", "Rojo" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(22, 101, 0, 0);
+        getContentPane().add(jComboBoxColor, gridBagConstraints);
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -96,91 +135,62 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 jButtonBuscarActionPerformed(evt);
             }
         });
-
-        jComboBoxColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Negro", "Blanco", "Gris metalizado", "Plata ", "Rojo" }));
-
-        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Deportivo", "Sedán", "SUV" }));
-
-        jLabelColor.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        jLabelColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelColor.setText("Color:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelPrecio)
-                            .addComponent(jLabelTipoVehiculo)
-                            .addComponent(jLabelMarca)
-                            .addComponent(jLabelColor))
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxColor, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonBuscar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipoVehiculo)
-                    .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMarca)
-                    .addComponent(jComboBoxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelColor)
-                    .addComponent(jComboBoxColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPrecio)
-                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButtonBuscar))
-                .addGap(16, 16, 16))
-        );
-
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipady = 20;
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(204, 105, 0, 101);
-        getContentPane().add(jPanel1, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(65, 66, 68, 71);
+        getContentPane().add(jButtonBuscar, gridBagConstraints);
 
-        jButtonSalir.setText("Salir del programa");
-        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTodosVehiculos.setText("Todos los Vehículos");
+        jButtonTodosVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirActionPerformed(evt);
+                jButtonTodosVehiculosActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 244, 25, 0);
-        getContentPane().add(jButtonSalir, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(65, 25, 68, 0);
+        getContentPane().add(jButtonTodosVehiculos, gridBagConstraints);
+
+        jButtonInsertarVehiculo.setText("Insertar Vehículo");
+        jButtonInsertarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertarVehiculoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(65, 44, 68, 0);
+        getContentPane().add(jButtonInsertarVehiculo, gridBagConstraints);
+
+        jLabelPrecio.setFont(new java.awt.Font("Helvetica Neue", 1, 25)); // NOI18N
+        jLabelPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPrecio.setText("Precio:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 163, 0, 0);
+        getContentPane().add(jLabelPrecio, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 94;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 101, 0, 71);
+        getContentPane().add(jTextFieldPrecio, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,7 +230,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
 
         } catch (SQLException e) {
+
             System.out.println("Error de conexión: " + e.getMessage());
+
         } finally {
             // Cerrar los recursos
             try {
@@ -240,7 +252,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonTodosVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTodosVehiculosActionPerformed
         // TODO add your handling code here:
 
         String url = "jdbc:mysql://localhost:3306/abdemotor";
@@ -266,7 +278,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             rv.setVisible(true);
 
         } catch (SQLException e) {
+            
             System.out.println("Error de conexión: " + e.getMessage());
+       
         } finally {
             // Cerrar recursos
             try {
@@ -283,9 +297,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 System.out.println("Error al cerrar recursos: " + e.getMessage());
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonTodosVehiculosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonInsertarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarVehiculoActionPerformed
         // TODO add your handling code here:
 
         // Obtener los valores de los campos de entrada
@@ -294,7 +308,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         String color = (String) jComboBoxColor.getSelectedItem(); // JComboBox para color
         double precio; // Precio como double
 
-        // Validar el campo de precio (puedes usar un JTextField para esto)
+        // Valida el campo de precio
         try {
             precio = Double.parseDouble(jTextFieldPrecio.getText()); // Obtener precio de un JTextField
         } catch (NumberFormatException e) {
@@ -334,8 +348,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
 
         } catch (SQLException e) {
+            
             System.out.println("Error de conexión: " + e.getMessage());
             JOptionPane.showMessageDialog(this, "Error de conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+       
         } finally {
             // Cerrar recursos
             try {
@@ -349,18 +365,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 System.out.println("Error al cerrar recursos: " + e.getMessage());
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
-        // TODO add your handling code here:
-        int confirm = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que deseas salir?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-
-        // Si el usuario confirma que desea salir
-        if (confirm == JOptionPane.YES_OPTION) {
-            // Cierra la aplicación
-            System.exit(0);
-        }
-    }//GEN-LAST:event_jButtonSalirActionPerformed
+    }//GEN-LAST:event_jButtonInsertarVehiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -394,10 +399,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JButton jButtonInsertarVehiculo;
+    private javax.swing.JButton jButtonTodosVehiculos;
     private javax.swing.JComboBox<String> jComboBoxColor;
     private javax.swing.JComboBox<String> jComboBoxMarca;
     private javax.swing.JComboBox<String> jComboBoxTipo;
@@ -405,7 +409,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMarca;
     private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JLabel jLabelTipoVehiculo;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldPrecio;

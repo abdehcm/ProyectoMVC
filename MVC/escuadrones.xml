@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cuartel>
+    <nombre>Roca Áurea</nombre>
+    <direccion>Bluscursoa Nº1, ladera sur.</direccion>
+    <provincia>Aureolis</provincia>
+    <dragones>
+        <dragon id = "1">
+            <nombre>Rágnar</nombre>
+            <apellidos>Shagith Skaneroth</apellidos>
+            <sexo>Macho</sexo>
+            <raza>Azabache</raza>
+            <fecha_eclosion>2224-06-12</fecha_eclosion>
+            <fecha_incorporacion>2262-08-24</fecha_incorporacion>
+            <alzada>7.2</alzada>
+            <largura>16.4</largura>
+            <envergadura>24.1</envergadura>
+            <alcance_llamarada>40.5</alcance_llamarada>
+        </dragon>
+        <dragon id = "2">
+            <nombre>Kiara</nombre>
+            <apellidos>Hadrath Riskiareth</apellidos>
+            <sexo>Hembra</sexo>
+            <raza>Argéntea</raza>
+            <fecha_eclosion>2225-06-13</fecha_eclosion>
+            <fecha_incorporacion>2262-08-24</fecha_incorporacion>
+            <alzada>8.5</alzada>
+            <largura>20.2</largura>
+            <envergadura>28.7</envergadura>
+            <alcance_llamarada>43.8</alcance_llamarada>
+        </dragon>
+        <dragon id = "3">
+            <nombre>Aznara</nombre>
+            <apellidos>Nuberith Yandreth</apellidos>
+            <sexo>Hembra</sexo>
+            <raza>Amatista</raza>
+            <fecha_eclosion>2162-06-15</fecha_eclosion>
+            <fecha_incorporacion>2262-08-24</fecha_incorporacion>
+            <alzada>6.8</alzada>
+            <largura>15.5</largura>
+            <envergadura>22.6</envergadura>
+            <alcance_llamarada>38.3</alcance_llamarada>
+        </dragon>
+        <dragon id = "4">
+            <nombre>Béirar</nombre>
+            <apellidos>Sycarith Volandrath</apellidos>
+            <sexo>Macho</sexo>
+            <raza>Esmeralda</raza>
+            <fecha_eclosion>2216-06-14</fecha_eclosion>
+            <fecha_incorporacion>2262-08-24</fecha_incorporacion>
+            <alzada>7.1</alzada>
+            <largura>15.2</largura>
+            <envergadura>22.2</envergadura>
+            <alcance_llamarada>38.8</alcance_llamarada>
+        </dragon>
+        <dragon id = "5">
+            <nombre>Saphira</nombre>
+            <apellidos>Shoguth Katorith</apellidos>
+            <sexo>Macho</sexo>
+            <raza>Zafirina</raza>
+            <fecha_eclosion>2220-06-18</fecha_eclosion>
+            <fecha_incorporacion>2293-10-06</fecha_incorporacion>
+            <alzada>7.2</alzada>
+            <largura>17.4</largura>
+            <envergadura>23.6</envergadura>
+            <alcance_llamarada>39.2</alcance_llamarada>
+        </dragon>
+    </dragones>
+    <jinetes>
+        <jinete id ="6">
+            <nombre>Óntar</nombre>
+            <apellidos>Al-Karachi Siham</apellidos>
+            <sexo>Hombre</sexo>
+            <fecha_nacimiento>2245-05-12</fecha_nacimiento>
+            <fecha_incorporacion>2262-08-24</fecha_incorporacion>
+            <altura>5.6</altura>
+            <mano_dominante>D</mano_dominante>
+            <rango_militar>Capitán</rango_militar>
+            <ocupacion>Patrulla</ocupacion>
+        </jinete>
+        <jinete id ="7">
+            <nombre>Sestos</nombre>
+            <apellidos>Kahsay Teklu</apellidos>
+            <sexo>Hombre</sexo>
+            <fecha_nacimiento>2234-11-06</fecha_nacimiento>
+            <fecha_incorporacion>2262-08-24</fecha_incorporacion>
+            <altura>6.1</altura>
+            <mano_dominante>D</mano_dominante>
+            <rango_militar>Sargento</rango_militar>
+            <ocupacion>Patrulla</ocupacion>
+        </jinete>
+        <jinete id ="8">
+            <nombre>Leisy</nombre>
+            <apellidos>Kahsay Teklu</apellidos>
+            <sexo>Mujer</sexo>
+            <fecha_nacimiento>2247-04-14</fecha_nacimiento>
+            <fecha_incorporacion>2263-01-11</fecha_incorporacion>
+            <altura>5.3</altura>
+            <mano_dominante>I</mano_dominante>
+            <rango_militar>Sargento</rango_militar>
+            <ocupacion>Veternario</ocupacion>
+        </jinete>
+    </jinetes>
+    <parejas>
+        <pareja>
+            <id_dragon>1</id_dragon>
+            <id_jinete>6</id_jinete>
+            <fecha_inicio>2263-01-11</fecha_inicio>
+            <fecha_fin>2278-03-23</fecha_fin>
+        </pareja>
+        <pareja>
+            <id_dragon>2</id_dragon>
+            <id_jinete>7</id_jinete>
+            <fecha_inicio>2265-03-05</fecha_inicio>
+            <fecha_fin>2266-12-09</fecha_fin>
+        </pareja>
+        <pareja>
+            <id_dragon>3</id_dragon>
+            <id_jinete>8</id_jinete>
+            <fecha_inicio>2267-07-09</fecha_inicio>
+            <fecha_fin>2269-09-13</fecha_fin>
+        </pareja>
+    </parejas>        
+</cuartel>
